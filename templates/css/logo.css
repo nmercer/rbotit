@@ -1,0 +1,15 @@
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-style:solid;
+  border-width:10px;
+  border-color:#2B2B2B;
+  -moz-border: 10px;
+  border-radius: 10px;
+
+  width: 460px;
+  height: 135px;
+}
+

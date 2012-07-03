@@ -1,0 +1,6 @@
+*.log
+*.pot
+*.pyc
+*.orig
+rbotit/settings.py
+*.mp3

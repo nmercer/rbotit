@@ -1,0 +1,99 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/settings.css" %}" />
+
+<div id="settings">
+  <div id="top"><center><b>SETTINGS</b></center></div>
+  <div id="mid" style="display: none;">
+
+    <center class="setting-label">Speed</center>
+    <div id="speed-div">
+      <form>
+        <center>
+          <div id="speed">
+            <input type="radio" id="speed0" name="speed" /><label for="speed0">Slowest</label>
+            <input type="radio" id="speed1" name="speed" /><label for="speed1">Slower</label>
+            <input type="radio" id="speed2" name="speed" /><label for="speed2">Slow</label>
+            <input type="radio" id="speed3" name="speed" checked="checked" /><label for="speed3">Med</label>
+            <input type="radio" id="speed4" name="speed" /><label for="speed4">Fast</label>
+            <input type="radio" id="speed5" name="speed" /><label for="speed5">Faster</label>
+            <input type="radio" id="speed6" name="speed" /><label for="speed6">Fastest</label>
+          </div>
+        </center>
+      </form>
+    </div>
+
+
+    <center class="setting-label">Pitch</center>
+     <div id="pitch-div">
+      <form>
+        <center>
+          <div id="pitch">
+            <input type="radio" id="pitch0" name="pitch" /><label for="pitch0">Highest</label>
+            <input type="radio" id="pitch1" name="pitch" /><label for="pitch1">Higher</label>
+            <input type="radio" id="pitch2" name="pitch" /><label for="pitch2">High</label>
+            <input type="radio" id="pitch3" name="pitch" checked="checked" /><label for="pitch3">Med</label>
+            <input type="radio" id="pitch4" name="pitch" /><label for="pitch4">Low</label>
+            <input type="radio" id="pitch5" name="pitch" /><label for="pitch5">Lower</label>
+            <input type="radio" id="pitch6" name="pitch" /><label for="pitch6">Lowest</label>
+          </div>
+        </center>
+      </form>
+    </div>
+
+    <center class="setting-label">Amplitude</center>
+    <div id="amp-div">
+      <form>
+        <center>
+          <div id="amp">
+            <input type="radio" id="amp0" name="amp" /><label for="amp0">Highest</label>
+            <input type="radio" id="amp1" name="amp" /><label for="amp1">Higher</label>
+            <input type="radio" id="amp2" name="amp" /><label for="amp2">High</label>
+            <input type="radio" id="amp3" name="amp" checked="checked" /><label for="amp3">Med</label>
+            <input type="radio" id="amp4" name="amp" /><label for="amp4">Low</label>
+            <input type="radio" id="amp5" name="amp" /><label for="amp5">Lower</label>
+            <input type="radio" id="amp6" name="amp" /><label for="amp6">Lowest</label>
+          </div>
+        </center>
+      </form>
+    </div>
+
+
+    <center class="setting-label">Voice</center>
+    <div id="lang-div">
+      <form>
+        <center>
+          <div class="lang">
+            <input type="radio" id="bs" name="lang" /><label for="bs">Bosnian</label>
+            <input type="radio" id="de" name="lang" /><label for="de">German</label>
+            <input type="radio" id="el" name="lang" /><label for="el">Greek</label>
+            <input type="radio" id="es" name="lang" /><label for="es">Spanish</label>
+            <input type="radio" id="fi" name="lang" /><label for="fi">Finnish</label>
+          </div>
+          <div class="lang">
+            <input type="radio" id="fr" name="lang" /><label for="fr">French</label>
+            <input type="radio" id="hi" name="lang" /><label for="hi">Indian</label>
+            <input type="radio" id="it" name="lang" /><label for="it">Italian</label>
+            <input type="radio" id="la" name="lang" /><label for="la">Latin</label>
+            <input type="radio" id="no" name="lang" /><label for="no">Norwegian</label>
+          </div>
+          <div class="lang">
+            <input type="radio" id="pl" name="lang" /><label for="pl">Polish</label>
+            <input type="radio" id="ro" name="lang" /><label for="ro">Romanian</label>
+            <input type="radio" id="ru" name="lang" /><label for="ru">Russian</label>
+            <input type="radio" id="en/en-sc" name="lang" /><label for="en/en-sc">Scottish</label>
+            <input type="radio" id="sv" name="lang" /><label for="sv">Swedish</label>
+          </div>
+          <div class="lang">
+            <input type="radio" id="tr" name="lang" /><label for="tr">Turkish</label>
+            <input type="radio" id="en/en" name="lang" /><label for="en/en">UK</label>
+            <input type="radio" id="en/en-us" name="lang" checked="checked" /><label for="en/en-us">USA</label>
+            <input type="radio" id="vi" name="lang" /><label for="vi">Vietnamese</label>
+            <input type="radio" id="zh" name="lang" /><label for="zh">Chinese</label>
+          </div>
+        </center>
+      </form>
+    </div>
+  </div>
+  <div id="bottom"></div>
+</div>
+

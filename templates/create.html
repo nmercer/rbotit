@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <title>Rbot.IT</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/create.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/smoothness/jquery-ui-1.8.21.custom.css" %}" />
+
+    <script src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui-1.8.21.custom.min.js" %}"></script>
+    <script src="{% static "js/create.js" %}"></script>
+    <script src="{% static "js/buttons.js" %}"></script>
+
+  </head>
+  <body>
+
+    {% include "logo.html" %}
+
+    <div id="center">
+      <div id="bash">
+        <img src="{% static "images/bash.png" %}" alt="Bash Prompt>"/>
+        <form action="/" method="post">{% csrf_token %}
+          {{ form.as_p }}
+          <input type="image" src="{% static "images/speakbttn.png" %}" id="speak" value="Submit" onchange="test"></br>
+        </form>
+        {% include "settings.html" %}
+      </div>
+      <div id="buttons">
+        <a href="/stat/"><input id="stats" type="image" src="{% static "images/statsbttn.png" %}"></a>
+        <a href="/code/"><input id="code" type="image" src="{% static "images/codebttn.png" %}"></a>
+      </div>
+    </div>
+
+
+  </body>
+</html>
+
