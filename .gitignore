@@ -4,3 +4,4 @@
 *.orig
 rbotit/settings.py
 *.mp3
+static/*
