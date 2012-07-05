@@ -1,6 +1,18 @@
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "css/logo.css" %}" />
+<head>
+  <meta name="description" content="Convert text to speach and share the links." />
+  <meta name="keywords" content="text-to-speech, robot, speech, rbotit, talk" />
+  <meta name="author" content="Nicholas John Mercer" />
+  <meta name="google-site-verification" content="tCIjgBg66fzu5fRAwctN-RkVrgFwp4Mqo-Dgkm24Eao" />
 
-<div id="logo">
-  <img src="{% static "images/logo.png" %}" alt="Rbot.IT"/>
+  <link rel="stylesheet" type="text/css" href="{% static "css/logo.css" %}" />
+  <link rel="shortcut icon" href="{% static "images/rbotit.ico" %}" />
+</head>
+<div id="center">
+  <div id="logo">
+    <img src="{% static "images/logo.png" %}" alt="Rbot.IT"/>
+  </div>
+  <div id="beta">
+    <img src="{% static "images/beta.png" %}" alt="Beta" id="beta-img"/>
+  </div>
 </div>

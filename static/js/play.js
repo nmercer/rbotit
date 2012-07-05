@@ -3,9 +3,8 @@ $(document).ready(function() {
 });
 
 $(function() {
-    //XXX: Create path to MP3, static links need to be fixed, these files are on the same host as the damn js file.
-    mp3 = "http://192.168.1.13/sound/" + window.location.pathname.replace(/\//g, '');
-    swf_path = "http://192.168.1.13/js/";
+    mp3 = "/static/sound/" + window.location.pathname.replace(/\//g, '') + ".mp3";
+    swf_path = "/static/js/";
 
     $("#speak_play").hide();
 

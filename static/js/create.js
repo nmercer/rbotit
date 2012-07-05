@@ -50,4 +50,17 @@ $(function() {
         $("#id_message").focus();
     });
 
+    $('#speak').click(function() {
+	message = $("#id_message").val();
+	if(!message) {
+            alert('Message can not be blank.');
+            return false; 
+	}
+
+        if(message.length > 200) {
+	    alert('Message must be under 200 characters long.');
+            return false;
+	}
+    });
+
 });

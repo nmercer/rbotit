@@ -4,6 +4,11 @@
     {% load staticfiles %}
     <title>Rbot.IT</title>
 
+    <meta name="description" content="Convert text to speach and share the links." />
+    <meta name="keywords" content="text-to-speech, robot, speech, rbotit, talk" />
+    <meta name="author" content="Nicholas John Mercer" />
+    <meta name="google-site-verification" content="tCIjgBg66fzu5fRAwctN-RkVrgFwp4Mqo-Dgkm24Eao" />
+
     <link rel="stylesheet" type="text/css" href="{% static "css/create.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "css/smoothness/jquery-ui-1.8.21.custom.css" %}" />
 
@@ -27,8 +32,9 @@
         {% include "settings.html" %}
       </div>
       <div id="buttons">
-        <a href="/stat/"><input id="stats" type="image" src="{% static "images/statsbttn.png" %}"></a>
-        <a href="/code/"><input id="code" type="image" src="{% static "images/codebttn.png" %}"></a>
+        <input id="stats" type="image" src="{% static "images/statsbttn.png" %}">
+        <input id="code" type="image" src="{% static "images/codebttn.png" %}">
+	{% include "footer.html" %}
       </div>
     </div>
 

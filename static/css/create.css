@@ -8,7 +8,7 @@ label {
 
 #speak {
   display: block;
-  margin-top: -296px;
+  margin-top: -304px;
   margin-left: 645px;
 }
 
@@ -27,6 +27,8 @@ label {
 #bash {
   float: left;
   background-color:#2B2B2B;
+
+  margin-top: 10px;
 
   border-style:solid;
   border-width:15px;
@@ -63,8 +65,10 @@ label {
 #id_message {
   position: absolute; 
   top: 205px;
-  
+ 
+  margin-top: 10px;
   margin-left: 160px;
+
   border-style: none;
   outline: none;
   color:#84BF22;
@@ -74,4 +78,9 @@ label {
   width: 425px;
   height: 250px;
   resize:none;
+}
+
+#reddit {
+  margin-top: 5px;
+  margin-left: 35px;
 }

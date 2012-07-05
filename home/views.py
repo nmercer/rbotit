@@ -10,7 +10,7 @@ import espeak_py
 import short_url
 
 class MessageForm(forms.Form):
-    message = forms.CharField(widget=forms.Textarea, max_length=100)
+    message = forms.CharField(widget=forms.Textarea, max_length=200)
     speed = forms.CharField(max_length=6)
     pitch = forms.CharField(max_length=6)
     amp = forms.CharField(max_length=4)
@@ -44,9 +44,9 @@ def create(request):
                         form.cleaned_data['lang'])
 
             speak = espeak_py.init(settings.SOUND_DIR)
-            speak.say(form.cleaned_data['message'], data, url)
+            speak.say(form.cleaned_data['message'].replace("'", ""), data, url)
 
-            return HttpResponseRedirect('/' + url + '/')
+            return HttpResponseRedirect('http://rbotit.com/' + url + '/')
     else:
         form = MessageForm()
         
@@ -55,16 +55,36 @@ def create(request):
     })
 
 def play(request):
-    count = PlayCounter()
-    count.save()
+    try:
+        url_id = short_url.decode_url(request.path.replace("/", ""))
+        link = Links.objects.filter(id=url_id)
+    except:
+        link = None
 
-    path = "sound/" + request.path.replace("/", "") + ".mp3"
-    return render_to_response('play.html', {
-        'path': path,
-    })
+    if link:
+        count = PlayCounter()
+        count.save()
+
+        path = "sound/" + request.path.replace("/", "") + ".mp3"
+        return render_to_response('play.html', {
+            'path': path,
+        })
+
+    return render_to_response('bad_url.html')
+
 
 def stat(request):
-    return render_to_response('stat.html')
+    play = PlayCounter.objects.all()
+    play_count = len(play)
+    create = CreateCounter.objects.all()
+    create_count = len(create)
+    return render_to_response('stat.html', {
+        'create_count': create_count,
+        'play_count': play_count,
+    })
 
 def code(request):
     return render_to_response('code.html')
+
+def bad(request):
+    return render_to_response('bad_url.html')
