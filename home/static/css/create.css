@@ -45,8 +45,13 @@ label {
   height: 1px;
   float: right;
   margin-right: 40px;
-  margin-top: 105px;
+  margin-top: 160px;
+}
 
+.nav-bttn {
+  margin-left: 25px;
+  width: 150px;
+  height 45px;
 }
 
 #id_speed {

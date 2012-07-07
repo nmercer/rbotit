@@ -5,7 +5,22 @@ $(document).ready(function() {
     $("#amp").buttonset();
     $(".lang").buttonset();
 
-    $("#id_message").focus();
+    //$("#id_message").focus();
+    TEXT = 'Insert text HERE and press [ENTER] or SPEAK button. Press the SETTINGS button below for more options.'
+    $("#id_message").val(TEXT);
+
+    $("#id_message").focus(function() {
+        if($("#id_message").val() == TEXT) {
+          $("#id_message").val('');
+        }
+    });
+
+    $("#id_message").blur(function() {
+        if($("#id_message").val() == '') {
+          $("#id_message").val(TEXT);
+        }
+    });
+
 
     //XXX: Should pull these with jquery.
     $("#id_speed").val('speed3');
@@ -24,30 +39,24 @@ $(function() {
 
     $("input[name='speed']").change(function(){
         $("#id_speed").val($(this).attr('id'));
-        $("#id_message").focus();
     });
 
     $("input[name='pitch']").change(function(){
         $("#id_pitch").val($(this).attr('id'));
-        $("#id_message").focus();
     });
 
     $("input[name='amp']").change(function(){
         $("#id_amp").val($(this).attr('id'));
-        $("#id_message").focus();
     });
 
     $("input[name='lang']").change(function(){
         $("#id_lang").val($(this).attr('id'));
-        $("#id_message").focus();
     });
 
     $('#top').toggle(function(){
         $('#mid').slideDown();
-        $("#id_message").focus();
     }, function(){
         $('#mid').slideUp();
-        $("#id_message").focus();
     });
 
     $('#speak').click(function() {
@@ -61,6 +70,12 @@ $(function() {
 	    alert('Message must be under 200 characters long.');
             return false;
 	}
+    });
+
+    $("#id_message").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#speak").click();
+        }
     });
 
 });
