@@ -61,6 +61,9 @@ def play(request):
         link = None
 
     if link:
+        print '----------------------------------------------------------------'
+        print request.mobile
+
         count = PlayCounter()
         count.save()
 
