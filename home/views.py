@@ -25,7 +25,6 @@ def create(request):
 
             count = CreateCounter()
             count.save()
-            print count
 
             if empty_links:
                 link = empty_links[0]
@@ -46,7 +45,7 @@ def create(request):
             speak = espeak_py.init(settings.SOUND_DIR)
             speak.say(form.cleaned_data['message'].replace("'", ""), data, url)
 
-            return HttpResponseRedirect('http://rbotit.com/' + url + '/')
+            return HttpResponseRedirect(settings.SITE_URL + url + '/')
     else:
         form = MessageForm()
         
