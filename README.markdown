@@ -13,7 +13,7 @@
 * Setting up Nginx to serve static files and run on port 80.
 * Setting up a complete development environment for rbotit.
 
-### Current Prod Setup:
+### Current Prod Setup (***Complete Production Guide Coming Soon!***):
 * Apache/modwsgi for django
 * Nginx for static files
 * Varnish Cache in front of Nginx
