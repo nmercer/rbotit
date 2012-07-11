@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     $("#code").click(function() {
 
-        window.location.href = "/code/";
+        window.location.href = "https://github.com/nmercer/rbotit/wiki";
     });
 
     $("#speak").hover(function() {

@@ -4,6 +4,5 @@ urlpatterns = patterns('home.views',
     url(r'^$', 'create'),
     url(r'^[a-zA-Z0-9]{5}/$', 'play'),
     url(r'^stat/$', 'stat'),
-    url(r'^code/$', 'code'),
     url(r'^.*/$', 'bad'),
 )

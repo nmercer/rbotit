@@ -83,8 +83,5 @@ def stat(request):
         'play_count': play_count,
     })
 
-def code(request):
-    return render_to_response('code.html')
-
 def bad(request):
     return render_to_response('bad_url.html')
