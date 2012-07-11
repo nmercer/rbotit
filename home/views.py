@@ -61,15 +61,13 @@ def play(request):
         link = None
 
     if link:
-        print '----------------------------------------------------------------'
-        print request.mobile
-
         count = PlayCounter()
         count.save()
 
         path = "sound/" + request.path.replace("/", "") + ".mp3"
         return render_to_response('play.html', {
             'path': path,
+            'mobile': request.mobile,
         })
 
     return render_to_response('bad_url.html')

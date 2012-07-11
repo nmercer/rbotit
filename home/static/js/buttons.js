@@ -82,4 +82,18 @@ $(document).ready(function() {
         window.location.href = "/";
     });
 
+    $("#mobile_play").hover(function() {
+            $(this).attr("src", "/static/images/mobile_play_hover.png");
+        },
+        function() {
+            $(this).attr("src", "/static/images/mobile_play_hover.png");
+        }
+    );
+
+    $("#mobile_play").mouseup(function() {
+        $(this).attr("src", "/static/images/mobile_play_press.png");
+    }).mousedown(function() {
+        $(this).attr("src", "/static/images/mobile_play_press.png");
+    });
+
 });
