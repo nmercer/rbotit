@@ -45,7 +45,7 @@ def create(request):
             speak = espeak_py.init(settings.SOUND_DIR)
             speak.say(form.cleaned_data['message'].replace("'", ""), data, url)
 
-            return HttpResponseRedirect(settings.SITE_URL + url + '/')
+            return HttpResponseRedirect('/' + url + '/')
     else:
         form = MessageForm()
         
