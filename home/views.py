@@ -4,8 +4,10 @@ from django.forms.widgets import RadioSelect
 from django.conf import settings
 from home.models import Links, CreateCounter, PlayCounter
 from django.utils.safestring import mark_safe
-from utils import create_espeak_data
+from utils import create_espeak_data, sequence_to_url, url_to_sequence
+from datetime import datetime
 
+import mongoengine
 import espeak_py
 import short_url
 
@@ -21,31 +23,38 @@ def create(request):
         form = MessageForm(request.POST)
 
         if form.is_valid():
-            empty_links = Links.objects.filter(used=False)
+            link = Links.objects(used=False).update_one(
+                set__used=True,
+                set__date_updated=datetime.now(),
+                full_result=True,
+            )
 
             count = CreateCounter()
             count.save()
 
-            if empty_links:
-                link = empty_links[0]
-                url = short_url.encode_url(link.id)
-                link.used = True
+            if link.has_key('updatedExisting') and not link['updatedExisting']:
+                link = Links()
+        		link.date_created = datetime.now()
+        		link.url = sequence_to_url(link.sequence) 
                 link.save()
-            else:
-                new_link = Links()
-                new_link.save()
-                url = short_url.encode_url(new_link.id)
-
+           
             data = create_espeak_data(
-                        form.cleaned_data['speed'],
-                        form.cleaned_data['pitch'],
-                        form.cleaned_data['amp'],
-                        form.cleaned_data['lang'])
-
+                form.cleaned_data['speed'],
+                form.cleaned_data['pitch'],
+                form.cleaned_data['amp'],
+                form.cleaned_data['lang']
+            )
+           
+            # Todo - Set this up to save to AWS S3. Get s3 url quick and pass up both.
+            # Todo - Set SQS message to delete local file after some time 
             speak = espeak_py.init(settings.SOUND_DIR)
-            speak.say(form.cleaned_data['message'].replace("'", ""), data, url)
+            speak.say(
+                form.cleaned_data['message'].replace("'", ""),
+                data,
+                link['url'] if isinstance(link, dict) else link.url,
+            )
 
-            return HttpResponseRedirect('/' + url + '/')
+            return HttpResponseRedirect('/' + link.url + '/')
     else:
         form = MessageForm()
         
@@ -54,13 +63,14 @@ def create(request):
     })
 
 def play(request):
-    try:
-        url_id = short_url.decode_url(request.path.replace("/", ""))
-        link = Links.objects.filter(id=url_id)
-    except:
-        link = None
+    sequence = url_to_sequence(request.path.replace("/", ""))
+    link = Links.objects(sequence=sequence).update_one(
+        inc__plays=1,
+        set__date_played=datetime.now(),
+    )
 
     if link:
+        # Todo - Setup AWS SQS message with delay to kill url after a few days if not played again
         count = PlayCounter()
         count.save()
 
@@ -71,7 +81,6 @@ def play(request):
         })
 
     return render_to_response('bad_url.html')
-
 
 def stat(request):
     play = PlayCounter.objects.all()

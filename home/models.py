@@ -1,11 +1,16 @@
-from django.db import models
+from mongoengine import *
 
-class Links(models.Model):
-    date = models.DateField(auto_now=True, auto_now_add=False)
-    used = models.BooleanField(default=True)
+class Links(Document):
+    used = BooleanField(default=True)
+    date_created = DateTimeField(required=True)
+    date_updated = DateTimeField()
+    date_played = DateTimeField()
+    sequence = SequenceField()
+    plays = IntField(default=0)
+    url = StringField(required=True)
 
-class CreateCounter(models.Model):
+class CreateCounter(Document):
     pass
 
-class PlayCounter(models.Model):
+class PlayCounter(Document):
     pass

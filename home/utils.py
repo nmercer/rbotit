@@ -1,3 +1,10 @@
+from home.models import Links
+from django.conf import settings
+from hashids import Hashids
+
+import random
+import string
+
 setting = {'speed0': 80,
            'speed1': 110,
            'speed2': 140,
@@ -28,3 +35,10 @@ def create_espeak_data(speed, pitch, amp, lang):
             'amp':setting[amp],
             'voice':lang}
 
+def sequence_to_url(sequence):
+    hashids = Hashids(salt=settings.HASHIDS_SALT, min_length=3)
+    return hashids.encode(sequence)
+
+def url_to_sequence(url):
+    hashids = Hashids(salt=settings.HASHIDS_SALT, min_length=3)
+    return hashids.decode(url)[0]

@@ -26,7 +26,7 @@ $(document).ready(function() {
     $("#id_speed").val('speed3');
     $("#id_pitch").val('pitch3');
     $("#id_amp").val('amp3');
-    $("#id_lang").val('en/en-us');
+    $("#id_lang").val('en-us');
 
 });
 
